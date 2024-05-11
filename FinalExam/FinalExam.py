@@ -7,8 +7,6 @@ Original file is located at
     https://colab.research.google.com/drive/13LR3QgIcwTPnDOy-ul266Bcx12DEvRUF
 """
 
-
-
 import streamlit as st
 
 @st.cache(allow_output_mutation=True)
@@ -23,9 +21,11 @@ file=st.file_uploader("Choose a Fashion Outfit from computer",type=["jpg","png"]
 
 from PIL import Image,ImageOps
 import numpy as np
+import PIL
+
 def import_and_predict(image_data,model):
     size=(64,64)
-    image=ImageOps.fit(image_data,size,Image.ANTIALIAS)
+    image= ImageOps.fit(image_data,size, PIL.Image.Resampling.LANCZOS)
     img=np.asarray(image)
     img_reshape=img[np.newaxis,...]
     prediction=model.predict(img_reshape)
@@ -35,7 +35,7 @@ if file is None:
 else:
     image=Image.open(file)
     st.image(image,use_column_width=True)
-    prediction=import_and_predict(image,model)
+    prediction = import_and_predict(image, model)
     class_names=['T-shirt', 'Trouser', 'Pullover', 'Dress','Coat','Sandal', 'Shirt', 'Sneaker', 'Bag', 'Ankle Shoe']
     string="OUTPUT : "+class_names[np.argmax(prediction)]
     st.success(string)
