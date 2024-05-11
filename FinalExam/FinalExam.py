@@ -29,9 +29,9 @@ import PIL
 from tensorflow.keras.preprocessing.image import img_to_array
 from keras.models import load_model
 
-def load_image(filename):
+def load_image(image):
 	# convert to array
-	img = img_to_array(img)
+	img = img_to_array(image)
 	# reshape into a single sample with 3 channels
 	img = img.reshape(3, 28, 28, 1)
 	# prepare pixel data
