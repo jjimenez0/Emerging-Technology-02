@@ -43,7 +43,7 @@ else:
     image = ImageOps.fit(image,size, PIL.Image.Resampling.LANCZOS)
     img = np.asarray(image)
     img_reshape = img[np.newaxis,...]
-    prediction=model.predict(img_reshape)
+    prediction = numpy.argmax(model.predict(img), axis=1)
     class_names=['T-shirt', 'Trouser', 'Pullover', 'Dress','Coat','Sandal', 'Shirt', 'Sneaker', 'Bag', 'Ankle Shoe']
     string="OUTPUT : "+class_names[np.argmax(prediction)]
     st.success(string)
