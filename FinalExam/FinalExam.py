@@ -8,6 +8,7 @@ Original file is located at
 """
 
 import streamlit as st
+import keras
 
 @st.cache(allow_output_mutation=True)
 def load_model():
