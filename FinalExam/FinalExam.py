@@ -26,24 +26,25 @@ file=st.file_uploader("Choose a Fashion Outfit from computer",type=["jpg","png"]
 from PIL import Image,ImageOps
 import numpy as np
 import PIL
+from tensorflow.keras.preprocessing.image import img_to_array
+from keras.models import load_model
 
-def import_and_predict(image_data,model):
-    size=(64,64)
-    image= ImageOps.fit(image_data,size, PIL.Image.Resampling.LANCZOS)
-    img=np.asarray(image)
-    img_reshape=img[np.newaxis,...]
-    prediction=model.predict(img_reshape)
-    return prediction
+def load_image(filename):
+	# convert to array
+	img = img_to_array(img)
+	# reshape into a single sample with 3 channels
+	img = img.reshape(3, 28, 28, 1)
+	# prepare pixel data
+	img = img.astype('float32')
+	img = img / 255.0
+	return img
     
 if file is None:
     st.text("Please upload an image file")
 else:
     image = Image.open(file)
     st.image(image)
-    size=(64,64)
-    image = ImageOps.fit(image,size, PIL.Image.Resampling.LANCZOS)
-    img = np.asarray(image)
-    img_reshape = img[np.newaxis,...]
+    load_image(image)
     prediction = numpy.argmax(model.predict(img), axis=1)
     class_names=['T-shirt', 'Trouser', 'Pullover', 'Dress','Coat','Sandal', 'Shirt', 'Sneaker', 'Bag', 'Ankle Shoe']
     string="OUTPUT : "+class_names[np.argmax(prediction)]
