@@ -41,7 +41,6 @@ else:
     img = np.asarray(image)
     img_reshape = img[np.newaxis,...]
     prediction=model.predict(img_reshape)
-    return prediction
     class_names=['T-shirt', 'Trouser', 'Pullover', 'Dress','Coat','Sandal', 'Shirt', 'Sneaker', 'Bag', 'Ankle Shoe']
     string="OUTPUT : "+class_names[np.argmax(prediction)]
     st.success(string)
