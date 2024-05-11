@@ -9,7 +9,7 @@ Original file is located at
 
 
 import streamlit as st
-import tensorflow
+import tensorflow as tf
 import keras
 
 @st.cache(allow_output_mutation=True)
