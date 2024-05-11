@@ -7,7 +7,7 @@ Original file is located at
     https://colab.research.google.com/drive/13LR3QgIcwTPnDOy-ul266Bcx12DEvRUF
 """
 
-
+!pip install keras
 
 import streamlit as st
 from keras.models import load_model
