@@ -7,7 +7,7 @@ Original file is located at
     https://colab.research.google.com/drive/13LR3QgIcwTPnDOy-ul266Bcx12DEvRUF
 """
 import streamlit as st
-import tensorflow as tf
+import tensorflow
 
 @st.cache(allow_output_mutation=True)
 def load_model():
