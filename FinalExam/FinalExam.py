@@ -36,5 +36,5 @@ else:
     img = load_image(file)
     result = np.argmax(model.predict(img), axis=1)
     class_names=['T-shirt', 'Trouser', 'Pullover', 'Dress','Coat','Sandal', 'Shirt', 'Sneaker', 'Bag', 'Ankle Shoe']
-    string="OUTPUT : "+class_names[np.argmax(result)]
+    string="OUTPUT : "+class_names[result]
     st.success(string)
