@@ -17,26 +17,20 @@ import numpy as np
 from tensorflow.keras.preprocessing.image import load_img
 from tensorflow.keras.preprocessing.image import img_to_array
 
-def load_image(filename):
-    # load the image
-    img = load_img(filename, target_size=(28, 28))
-    
-    # convert to array
-    img = img_to_array(img)
-    # reshape into a single sample with 3 channels
-    img = img.reshape(3, 28, 28, 1)
-    # prepare pixel data
-    img = img.astype('float32')
-    img = img / 255.0
-    return img
+def import_and_predict(image_data,model):
+    size=(28,28)
+    image=ImageOps.fit(image_data,size)
+    img=np.asarray(image)
+    img_reshape=img[np.newaxis,...]
+    prediction=model.predict(img_reshape)
+    return prediction
 
 if file is None:
     st.text("Please upload an image file")
 else:
-    display=Image.open(file)
-    st.image(display,use_column_width=True)
-    img = load_image(file)
-    result = np.argmax(model.predict(img), axis=1)
+    image=Image.open(file)
+    st.image(image,use_column_width=True)
+    prediction=import_and_predict(image,model)
     class_names=['T-shirt', 'Trouser', 'Pullover', 'Dress','Coat','Sandal', 'Shirt', 'Sneaker', 'Bag', 'Ankle Shoe']
-    string="OUTPUT : "+class_names[result]
+    string="OUTPUT : "+class_names[prediction]
     st.success(string)
