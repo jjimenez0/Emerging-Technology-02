@@ -20,7 +20,7 @@ from tensorflow.keras.preprocessing.image import img_to_array
 def load_image(filename):
     # load the image
     img = load_img(filename, target_size=(28, 28))
-    st.image(img,use_column_width=True)
+    
     # convert to array
     img = img_to_array(img)
     # reshape into a single sample with 3 channels
@@ -33,6 +33,8 @@ def load_image(filename):
 if file is None:
     st.text("Please upload an image file")
 else:
+    display=Image.open(file)
+    st.image(display,use_column_width=True)
     img = load_image(file)
     result = np.argmax(model.predict(img), axis=1)
     class_names=['T-shirt', 'Trouser', 'Pullover', 'Dress','Coat','Sandal', 'Shirt', 'Sneaker', 'Bag', 'Ankle Shoe']
