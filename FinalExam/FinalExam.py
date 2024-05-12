@@ -35,7 +35,6 @@ else:
     img = load_image(file)
     st.image(img,use_column_width=True)
     result = numpy.argmax(model.predict(img), axis=1)
-    return result
     class_names=['T-shirt', 'Trouser', 'Pullover', 'Dress','Coat','Sandal', 'Shirt', 'Sneaker', 'Bag', 'Ankle Shoe']
-    string="OUTPUT : "+class_names[np.argmax(prediction)]
+    string="OUTPUT : "+class_names[np.argmax(result)]
     st.success(string)
