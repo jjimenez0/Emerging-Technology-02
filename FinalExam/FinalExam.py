@@ -12,7 +12,7 @@ import streamlit as st
 import tensorflow as tf
 import keras
 import numpy
-import cv2
+
 
 @st.cache(allow_output_mutation=True)
 def load_model():
