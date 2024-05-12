@@ -18,16 +18,16 @@ from tensorflow.keras.preprocessing.image import load_img
 from tensorflow.keras.preprocessing.image import img_to_array
 
 def load_image(filename):
-  	# load the image
-  	img = load_img(filename, target_size=(28, 28))
-  	# convert to array
-  	img = img_to_array(img)
-  	# reshape into a single sample with 3 channels
-  	img = img.reshape(3, 28, 28, 1)
-  	# prepare pixel data
-  	img = img.astype('float32')
+    # load the image
+    img = load_img(filename, target_size=(28, 28))
+    # convert to array
+    img = img_to_array(img)
+    # reshape into a single sample with 3 channels
+    img = img.reshape(3, 28, 28, 1)
+    # prepare pixel data
+    img = img.astype('float32')
     img = img / 255.0
-  	return img
+    return img
 
 if file is None:
     st.text("Please upload an image file")
