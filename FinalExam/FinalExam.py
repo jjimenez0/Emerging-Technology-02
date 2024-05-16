@@ -3,7 +3,7 @@ import tensorflow as tf
 
 @st.cache_resource
 def load_model():
-  model=('final_model1.hdf5')
+  model=tf.keras.models.load_model('final_model1.hdf5')
   return model
 model = load_model()
 st.write("""
